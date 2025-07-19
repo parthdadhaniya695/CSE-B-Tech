@@ -1,0 +1,32 @@
+<!-- which keyboard event is fired -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Keyboard Event Example</title>
+</head>
+
+<body>
+    <h2>Type in the input box</h2>
+    <input type="text" id="keyboardInput" placeholder="Press any key">
+
+    <script>
+        const input = document.getElementById('keyboardInput');
+
+        input.addEventListener('keydown', (event) => {
+            console.log(`keydown: ${event.key}`);
+        });
+
+        input.addEventListener('keyup', (event) => {
+            console.log(`keyup: ${event.key}`);
+        });
+
+        input.addEventListener('keypress', (event) => {
+            console.log(`keypress (deprecated): ${event.key}`);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!-- write a program to change background of click of button -->
+
+<html>
+
+<head>
+    <title>Change Background Color</title>
+    <style>
+        body {
+            transition: background-color 0.5s;
+            text-align: center;
+            padding-top: 100px;
+            font-family: Arial, sans-serif;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Click Here to change background color</h2>
+    <button onclick="changeBackground()">Change Color</button>
+
+    <script>
+        function changeBackground() {
+            const randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
+            document.body.style.backgroundColor = randomColor;
+        }
+    </script>
+
+</body>
+
+</html>

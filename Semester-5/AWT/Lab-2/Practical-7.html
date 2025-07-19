@@ -1,0 +1,89 @@
+<!-- crud on array html and js -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student CRUD</title>
+  <style>
+    body { font-family: Arial; margin: 20px; }
+    input { padding: 8px; margin: 5px; }
+    table { width: 50%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+    button { margin: 2px; }
+  </style>
+</head>
+<body>
+
+<h2>Student Management</h2>
+
+<input type="text" id="studentName" placeholder="Enter student name" />
+<button onclick="addStudent()">Add</button>
+<button onclick="updateStudent()">Update</button>
+
+<table>
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody id="studentTable"></tbody>
+</table>
+
+<script>
+  let students = [];
+  let selectedIndex = -1;
+
+  function renderTable() {
+    const table = document.getElementById("studentTable");
+    table.innerHTML = "";
+    students.forEach((name, index) => {
+      table.innerHTML += `
+        <tr>
+          <td>${index + 1}</td>
+          <td>${name}</td>
+          <td>
+            <button onclick="editStudent(${index})">Edit</button>
+            <button onclick="deleteStudent(${index})">Delete</button>
+          </td>
+        </tr>`;
+    });
+  }
+
+  function addStudent() {
+    const name = document.getElementById("studentName").value.trim();
+    if (name !== "") {
+      students.push(name);
+      document.getElementById("studentName").value = "";
+      renderTable();
+    }
+  }
+
+  function editStudent(index) {
+    document.getElementById("studentName").value = students[index];
+    selectedIndex = index;
+  }
+
+  function updateStudent() {
+    const name = document.getElementById("studentName").value.trim();
+    if (selectedIndex > -1 && name !== "") {
+      students[selectedIndex] = name;
+      selectedIndex = -1;
+      document.getElementById("studentName").value = "";
+      renderTable();
+    }
+  }
+
+  function deleteStudent(index) {
+    students.splice(index, 1);
+    renderTable();
+  }
+
+  // Initial empty render
+  renderTable();
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Dynamic Form</title>
+</head>
+<body class="d-flex justify-content-center align-items-center vh-120">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form id="dynamicForm" class="p-4 border rounded shadow" [formGroup]="userFrom">
+                    <div class="mb-3">
+                        <label class="form-label">Username</label>
+                        <input type="text" class="form-control" name="username" formControlName="username">
+                        <span class="text-danger" 
+                        *ngIf="userFrom.get('username')?.errors?.['required'] && userFrom.get('username')?.touched">Please Enter User Name</span>
+                        <span class="text-danger"
+                        *ngIf="userFrom.get('username')?.errors?.['maxlength'] && userFrom.get('username')?.touched">User Name must be 8</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-control" formControlName="email">
+                        <span class="text-danger" 
+                        *ngIf="userFrom.get('email')?.errors?.['required'] && userFrom.get('email')?.touched">Please Enter Email</span>
+                        <span class="text-danger"
+                        *ngIf="userFrom.get('email')?.errors?.['pattern'] && userFrom.get('email')?.touched">Please Enter Valid Email</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Contact No</label>
+                        <input type="tel" class="form-control" name="contact" formControlName="contactNo">
+                        <span class="text-danger" 
+                        *ngIf="userFrom.get('contactNo')?.errors?.['required'] && userFrom.get('contactNo')?.touched">Please Enter Contact No</span>
+                        <span class="text-danger"
+                        *ngIf="userFrom.get('contactNo')?.errors?.['pattern'] && userFrom.get('contactNo')?.touched">Please Enter Valid Contact No</span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">SPI</label>
+                        <input type="number" class="form-control" name="spi" formControlName="spi">
+                        <span class="text-danger" 
+                        *ngIf="userFrom.get('spi')?.errors?.['required'] && userFrom.get('spi')?.touched">Please Enter SPI</span>
+                        <span class="text-danger"
+                        *ngIf="userFrom.get('spi')?.errors?.['min'] && userFrom.get('spi')?.touched">SPI cannot be less than 0</span>
+                        <span class="text-danger"
+                        *ngIf="userFrom.get('spi')?.errors?.['max'] && userFrom.get('spi')?.touched">SPI cannot be more than 10</span>
+                        <span class="text-danger"
+                        *ngIf="userFrom.get('spi')?.errors?.['pattern'] && userFrom.get('spi')?.touched">SPI must be a number with up to 2 decimal places.</span>
+                    </div>
+
+                    <div class="mb-3" *ngIf="userFrom.contains('age')">
+                        <label class="form-label">Age</label>
+                        <input type="number" class="form-control" name="age" formControlName="age">
+                        <span class="text-danger" 
+                        *ngIf="userFrom.get('age')?.errors?.['required'] && userFrom.get('age')?.touched">Please Enter Age</span>
+                        <span class="text-danger"
+                        *ngIf="userFrom.get('age')?.errors?.['min'] && userFrom.get('age')?.touched">Age cannot be less than 18</span>
+                    </div>
+
+                    <div id="extraControls"></div>
+
+                    <button type="button" class="btn btn-primary me-2" id="addControl" (click)="addAgeControl()">Add Control</button>
+                    <button type="button" class="btn btn-danger" id="removeControl" (click)="removeAgeControl()">Remove Control</button>
+                    <button type="submit" class="btn btn-success mt-3 d-block w-100">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

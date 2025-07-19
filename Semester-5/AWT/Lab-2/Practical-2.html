@@ -1,0 +1,39 @@
+<!-- write a program to recognize which mouse event is fired -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mouse Event Detector</title>
+  <style>
+    #eventBox {
+      width: 300px;
+      height: 200px;
+      border: 2px solid #333;
+      text-align: center;
+      line-height: 200px;
+      margin: 50px auto;
+      font-size: 20px;
+      background-color: #f9f9f9;
+    }
+  </style>
+</head>
+<body>
+
+<div id="eventBox">Hover or Click Me</div>
+<p id="output" style="text-align:center; font-size: 18px;"></p>
+
+<script>
+  const eventBox = document.getElementById('eventBox');
+  const output = document.getElementById('output');
+
+  const mouseEvents = ['click', 'dblclick', 'mousedown', 'mouseup', 'mouseover', 'mouseout', 'mousemove'];
+
+  mouseEvents.forEach(eventType => {
+    eventBox.addEventListener(eventType, () => {
+      output.textContent = `Mouse Event Fired: ${eventType}`;
+    });
+  });
+</script>
+
+</body>
+</html>

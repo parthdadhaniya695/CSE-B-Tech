@@ -1,0 +1,10 @@
+1. ping
+2. ipconfig/ifconfig
+3. getmac
+4. hostname
+5. systeminfo
+6. nslookup
+7. tracert/tracerouter
+8. pathping
+9. netstat
+10. arp

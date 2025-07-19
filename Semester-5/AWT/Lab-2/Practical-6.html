@@ -1,0 +1,96 @@
+<!-- student registration form validation using js -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Student Registration Form</title>
+    <style>
+        body {
+            font-family: Arial;
+            padding: 20px;
+        }
+
+        input,
+        select {
+            display: block;
+            margin: 10px 0;
+            padding: 8px;
+            width: 300px;
+        }
+
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h2>Student Registration Form</h2>
+
+    <form id="studentForm" onsubmit="return validateForm()">
+        <label>First Name:</label>
+        <input type="text" id="firstName" />
+
+        <label>Last Name:</label>
+        <input type="text" id="lastName" />
+
+        <label>Email:</label>
+        <input type="text" id="email" />
+
+        <label>Phone:</label>
+        <input type="text" id="phone" />
+
+        <label>Semester:</label>
+        <select id="semester">
+            <option value="">Select Semester</option>
+            <option value="1">1st</option>
+            <option value="2">2nd</option>
+            <option value="3">3rd</option>
+            <option value="4">4th</option>
+        </select>
+
+        <span class="error" id="errorMsg"></span>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <script>
+        function validateForm() {
+            let firstName = document.getElementById("firstName").value.trim();
+            let lastName = document.getElementById("lastName").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let phone = document.getElementById("phone").value.trim();
+            let semester = document.getElementById("semester").value;
+            let errorMsg = document.getElementById("errorMsg");
+
+            if (!firstName || !lastName || !email || !phone || !semester) {
+                errorMsg.textContent = "All fields are required!";
+                return false;
+            }
+
+            // Email validation
+            let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+            if (!email.match(emailPattern)) {
+                errorMsg.textContent = "Invalid email address!";
+                return false;
+            }
+
+            // Phone number validation
+            let phonePattern = /^[0-9]{10}$/;
+            if (!phone.match(phonePattern)) {
+                errorMsg.textContent = "Phone must be 10 digits!";
+                return false;
+            }
+
+            // Clear error and allow form to submit
+            errorMsg.textContent = "";
+            alert("Registration Successful!");
+            return true;
+        }
+    </script>
+
+</body>
+
+</html>

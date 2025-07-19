@@ -1,0 +1,27 @@
+<!-- if the key is vowel then send vowel msg -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Vowel Key Detection</title>
+</head>
+<body>
+
+<h2>Press any key</h2>
+<p id="message"></p>
+
+<script>
+document.addEventListener("keydown", function(event) {
+  const key = event.key.toLowerCase(); 
+  const vowels = ["a", "e", "i", "o", "u"];
+  
+  if (vowels.includes(key)) {
+    document.getElementById("message").textContent = `"${key}" is a vowel.`;
+  } else {
+    document.getElementById("message").textContent = `"${key}" is not a vowel.`;
+  }
+});
+</script>
+
+</body>
+</html>

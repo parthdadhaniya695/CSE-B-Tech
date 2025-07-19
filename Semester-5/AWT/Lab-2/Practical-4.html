@@ -1,0 +1,64 @@
+<!-- which form event is fire -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Form Events Example</title>
+</head>
+<body>
+  <h2>Form Events Demo</h2>
+
+  <form id="myForm">
+    <label>Name:
+      <input type="text" id="nameInput">
+    </label><br><br>
+
+    <label>Choose option:
+      <select id="dropdown">
+        <option value="">Select</option>
+        <option value="A">Option A</option>
+        <option value="B">Option B</option>
+      </select>
+    </label><br><br>
+
+    <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
+  </form>
+
+  <script>
+    const form = document.getElementById('myForm');
+    const nameInput = document.getElementById('nameInput');
+    const dropdown = document.getElementById('dropdown');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault(); // Prevent actual submission
+      console.log('Form submit event fired');
+    });
+
+    form.addEventListener('reset', () => {
+      console.log('Form reset event fired');
+    });
+
+    nameInput.addEventListener('change', () => {
+      console.log('Name input change event fired');
+    });
+
+    nameInput.addEventListener('input', () => {
+      console.log('Name input input event fired');
+    });
+
+    nameInput.addEventListener('focus', () => {
+      console.log('Name input focus event fired');
+    });
+
+    nameInput.addEventListener('blur', () => {
+      console.log('Name input blur event fired');
+    });
+
+    dropdown.addEventListener('change', () => {
+      console.log('Dropdown change event fired');
+    });
+  </script>
+</body>
+</html>

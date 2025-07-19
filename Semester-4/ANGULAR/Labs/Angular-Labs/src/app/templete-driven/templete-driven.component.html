@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Form - Template Driven</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Angular Core -->
+    <script src="https://cdn.jsdelivr.net/npm/@angular/core@17.0.0"></script>
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form #userForm="ngForm">
+                    <div class="mb-3">
+                        <label for="username" class="form-label">Username</label>
+                        <input type="text" name="username" class="form-control" placeholder="Enter your username"
+                            [(ngModel)]="user.username" #username="ngModel" required>
+                        <span class="text-danger" *ngIf="username.invalid && username.touched">Please Enter Username</span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" name="email" class="form-control" placeholder="Enter your email"
+                            [(ngModel)]="user.email" #email="ngModel"
+                            pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}" required>
+                        <span class="text-danger" *ngIf="email.invalid && email.touched && !user.email">Please Enter Email</span>
+                        <span class="text-danger" *ngIf="email.invalid && email.touched && user.email">Please Enter Valid Email</span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="contactNo" class="form-label">Contact Number</label>
+                        <input type="text" name="contactNo" class="form-control" placeholder="Enter your contact number"
+                            [(ngModel)]="user.contactNo" #contactNo="ngModel" required>
+                        <span class="text-danger" *ngIf="contactNo.invalid && contactNo.touched">Please Enter Contact Number</span>
+                    </div>
+                    <div class="mb-3">
+                        <label for="spi" class="form-label">SPI</label>
+                        <input type="number" name="spi" class="form-control" placeholder="Enter your SPI"
+                            [(ngModel)]="user.spi" #spi="ngModel" required min="0" max="10">
+                        <span class="text-danger" *ngIf="spi.invalid && spi.touched && !user.spi">
+                            Please Enter SPI
+                        </span>
+                        <span class="text-danger" *ngIf="(user.spi < 0 || user.spi > 10) && spi.touched">
+                            SPI must be between 0 and 10
+                        </span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="age" class="form-label">Age</label>
+                        <input type="number" name="age" class="form-control" placeholder="Enter your age"
+                            [(ngModel)]="user.age" #age="ngModel" required min="18" max="25">
+                        <span class="text-danger" *ngIf="age.invalid && age.touched && !user.age">Please Enter Age</span>
+                        <span class="text-danger" *ngIf="(user.age > 25 || user.age < 18) && age.touched && age.invalid">Please enter age between 18 to 25</span>
+                    </div>
+                    <button type="submit" class="btn btn-primary w-100" [disabled]="userForm.invalid">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
