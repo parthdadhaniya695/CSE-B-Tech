@@ -40,10 +40,7 @@ export default function RootLayout({
                 <Link className="nav-link py-3 px-0 px-lg-3 rounded" href="/students">Students</Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link py-3 px-0 px-lg-3 rounded" href="#">Faculties</Link>
-              </li>
-              <li className="nav-item">
-                <Link className="nav-link py-3 px-0 px-lg-3 rounded" href="#">Laptops</Link>
+                <Link className="nav-link py-3 px-0 px-lg-3 rounded" href="/faculties">Faculties</Link>
               </li>
             </ul>
           </div>

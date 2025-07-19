@@ -8,10 +8,11 @@ async function StudentDetail({ params }: { params: Promise<{ id: number }> }) {
 
   return (
     <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-xl shadow-lg">
-      <h1 className="text-3xl font-bold text-gray-800 mb-4">{data.name}</h1>
+      <h1 className="text-3xl font-bold text-gray-800 mb-4">{data.StudentName}</h1>
+      <h3 className="text-3xl font-bold text-gray-800 mb-4">{data.StudentEmail}</h3>
       <img
-        src={data.avatar}
-        alt={data.name}
+        src={data.StudentImage}
+        alt={data.StudentName}
         className="w-full h-auto rounded-lg border border-gray-200 mb-6"
       />
       <Link href="/students">
