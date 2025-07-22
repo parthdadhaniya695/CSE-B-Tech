@@ -28,7 +28,6 @@ async function Students() {
     </div>
   </div>
 );
-
 }
 
 export default Students;

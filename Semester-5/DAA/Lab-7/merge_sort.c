@@ -1,4 +1,6 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
 
 void merge(int arr[], int left, int mid, int right) {
     int i, j, k;
@@ -44,16 +46,61 @@ void printArray(int arr[], int size) {
 }
 
 int main() {
-    int arr[] = {38, 27, 43, 3, 9, 82, 10};
-    int size = sizeof(arr) / sizeof(arr[0]);
+    FILE *fp;
+    clock_t start, end;
+    double cputime;
+    int arr[100000], n, choice;
+    char filename[50];
+
+    printf("Select the case to sort:\n");
+    printf("1. Best Case\n");
+    printf("2. Average Case\n");
+    printf("3. Worst Case\n");
+    printf("Enter your choice (1-3): ");
+    scanf("%d", &choice);
+
+    printf("Enter Number Of Elements: ");    
+    scanf("%d", &n);
+
+    switch (choice) {
+        case 1:
+            sprintf(filename, "../Lab-3/best.txt");
+            break;
+        case 2:
+            sprintf(filename, "../Lab-3/average.txt");
+            break;
+        case 3:
+            sprintf(filename, "../Lab-3/worst.txt");
+            break;
+        default:
+            printf("Invalid choice.\n");
+            return 1;
+    }
+
+    fp = fopen(filename, "r");
+    if (fp == NULL) {
+        printf("Failed to open %s\n", filename);
+        return 1;
+    }
+
+    for (int i = 0; i < n; i++) {
+        fscanf(fp, "%d", &arr[i]);
+    }
+    fclose(fp);
 
     printf("Original array:\n");
-    printArray(arr, size);
+    printArray(arr, n);
 
-    mergeSort(arr, 0, size - 1);
+    start = clock();
+    mergeSort(arr, 0, n - 1);
+    end = clock();
+
+    cputime = ((double)(end - start)) / CLOCKS_PER_SEC; 
 
     printf("Sorted array:\n");
-    printArray(arr, size);
+    printArray(arr, n);
+
+    printf("Time Taken = %f seconds\n", cputime);
 
     return 0;
 }
