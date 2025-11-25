@@ -1,0 +1,8 @@
+Hello, this is a sample text file.
+You can write anything you want here.
+		This is line number 3.
+ID: 101
+Name: Parth Dadhaniya
+Course: B.Tech
+Semester: 3
+Marks: 89

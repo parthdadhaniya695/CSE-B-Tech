@@ -1,0 +1,5 @@
+Hello This Is A Sample Text File.
+I Am Testing The C Program.
+It Should Capitalize The First Letter Of Every Word.
+This Is Another Line.
+Parth Dadhaniya Writing Example Text.
