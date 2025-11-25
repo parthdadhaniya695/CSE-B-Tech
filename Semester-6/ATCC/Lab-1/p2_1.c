@@ -14,13 +14,8 @@ int main() {
     source = fopen(srcFile, "r");
     target = fopen(destFile, "a");  
 
-    if (source == NULL || target == NULL) {
-        printf("Error opening file!\n");
-        return 1;
-    }
-
-    while (fscanf(source, "%[^\n]\n", buffer) != EOF) {
-        fprintf(target, "%s\n", buffer);
+    while (fscanf(source, "%s\n", buffer) != EOF) {
+        fprintf(target , "%s\n", buffer);
     }
 
     fclose(source);
