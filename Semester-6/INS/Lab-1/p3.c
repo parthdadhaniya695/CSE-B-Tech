@@ -10,24 +10,23 @@ int main() {
     printf("Enter a string: ");
     fgets(str, sizeof(str), stdin);
 
-    // Remove newline character if present
     str[strcspn(str, "\n")] = '\0';
 
     int len = strlen(str);
 
     printf("\nOriginal String: %s\n", str);
 
-    // Perform bitwise AND
+    // AND
     printf("After AND with %d: ", KEY);
     for (int i = 0; i < len; i++) {
         printf("%c", str[i] & KEY);
     }
     printf("\n");
 
-    // Perform bitwise XOR
-    printf("After XOR with %d: ", KEY);
+    // XOR (print hex)
+    printf("After XOR with %d (hex): ", KEY);
     for (int i = 0; i < len; i++) {
-        printf("%c", str[i] ^ KEY);
+        printf("%02X ", str[i] ^ KEY);
     }
     printf("\n");
 

@@ -4,7 +4,7 @@
 
 int main() {
     unsigned int num, n, left_rotate, right_rotate;
-    int bits = 32;  // assume 32-bit unsigned int
+    int bits = 32;  
 
     printf("Enter a number: ");
     scanf("%u", &num);
@@ -12,12 +12,10 @@ int main() {
     printf("Enter number of positions to rotate: ");
     scanf("%u", &n);
 
-    n %= bits;  // to avoid rotating more than 32
+    n %= bits; 
 
-    // Left circular rotation
     left_rotate = (num << n) | (num >> (bits - n));
 
-    // Right circular rotation
     right_rotate = (num >> n) | (num << (bits - n));
 
     printf("\nOriginal Number: %u\n", num);
