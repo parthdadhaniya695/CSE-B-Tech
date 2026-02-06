@@ -1,0 +1,3 @@
+Hello World
+This is a LEX test file
+It contains 3 lines
